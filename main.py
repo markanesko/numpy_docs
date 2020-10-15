@@ -400,6 +400,165 @@ def copies_and_views():
 
     print('b: \n', b) 
 
+def functions_and_methods_array_creation():
+    
+    # https://numpy.org/devdocs/reference/generated/numpy.arange.html#numpy.arange
+    x = np.arange(1, 1234, 21, dtype=np.int64)
+
+    print('np.arange = ', x) # np.arange works like python range
+
+    # https://numpy.org/devdocs/reference/generated/numpy.array.html#numpy.array
+    x = np.array( [1, 2, 3, 4, 5, 6] )
+
+    print('np.array = ', x)
+
+
+    # https://numpy.org/devdocs/reference/generated/numpy.copy.html#numpy.copy
+    x = np.array([1, 2, 3])
+
+    y = x
+
+    z = np.copy(x)
+
+    x[0] = 17
+    print('x: ', x, ' y: ', y, ' z: ', z)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.empty.html#numpy.empty
+    x = np.empty( (3, 4) )
+
+    print('x: \n', x)
+
+    x = np.empty( (2, 2), dtype=np.int)
+
+    print('x: \n', x)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.empty_like.html#numpy.empty_like
+    x = np.array( [[1, 2, 3], [2, 3, 4]] )
+    y = np.empty_like(x)
+
+    print('x: \n', x, '\ny: \n', y)
+
+
+    x = np.array( [[1., 2., 3.], [2., 3., 4.]] )
+    y = np.empty_like(x)
+
+    print('x: \n', x, '\ny: \n', y)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.eye.html#numpy.eye
+    x = np.eye(7, dtype=np.int64)
+
+    print('x: \n', x)
+
+
+    x = np.eye(7, 4, dtype=np.float64)
+
+    print('x: \n', x)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.fromfile.html#numpy.fromfile
+    # later
+
+    # https://numpy.org/devdocs/reference/generated/numpy.fromfunction.html#numpy.fromfunction
+    def f(x, y):
+        return (x**2 - y)*0.2
+    x = np.fromfunction(f, (4, 7), dtype=np.float64)
+
+    print('x: \n', x)
+
+    x = np.fromfunction(lambda i, j: i + 2 * j, (5, 7), dtype=np.int64)
+
+    print('x: \n', x)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.identity.html#numpy.identity
+    x = np.identity(6)
+
+    print('x: \n', x)
+
+    x = np.identity(4, dtype=np.float32)
+
+    print('x: \n', x)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.linspace.html#numpy.linspace
+    x = np.linspace(2.0, np.pi * 6, num=23)
+
+    print('x: \n', x)
+    
+    x = np.linspace(2.0, np.pi * 6, num=23, endpoint=False)
+
+    print('x: \n', x)
+
+    x = np.linspace(2.0, np.pi * 6, num=23, retstep=True)
+
+    print('x: \n', x[0], '\nwith step:\n', x[1])
+
+    # https://numpy.org/devdocs/reference/generated/numpy.logspace.html#numpy.logspace
+    x = np.logspace(2.0, 4.0, num=6)
+
+    print('x: \n', x)
+
+    x = np.logspace(2.0, 4.0, num=6, endpoint=False)
+
+    print('x: \n', x)
+
+    x = np.logspace(2.0, 4.0, num=6, base=2.0)
+
+    print('x: \n', x)
+    # note for logspace
+    # In linear space, the sequence starts at base ** start (base to the power of start) and ends with base ** stop (see endpoint below).
+
+    # https://numpy.org/devdocs/reference/generated/numpy.mgrid.html#numpy.mgrid
+    # https://numpy.org/devdocs/reference/generated/numpy.ogrid.html#numpy.ogrid
+    # later
+
+    # https://numpy.org/devdocs/reference/generated/numpy.ones.html#numpy.ones
+    x = np.ones( (2, 7), dtype=np.int32)
+
+    print('x: \n', x)
+
+    s = (4, 4)
+    x = np.ones( s, dtype=np.int32)
+
+    print('x: \n', x)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.ones_like.html#numpy.ones_like
+    x = np.arange(18)
+    x.resize( (3, 6) )
+
+    print('x: \n', x)
+
+    x = np.ones_like(x) 
+
+    print('x: \n', x)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.r_.html#numpy.r_
+    x = np.r_[np.array([1, 2, 3]), [1]*4, np.array([1, 2])]
+
+    print('x: \n', x)
+
+    y = np.array( [[1, 2, 3], [4, 5, 6]] )
+    x = np.r_['-1', y, y]
+
+    print('x: \n', x)
+
+    x = np.r_['0', y, y]
+
+    print('x: \n', x)
+
+    x = np.r_['r', [1, 2, 3], [1, 2, 3, 4]]
+    
+    print('x: \n', x)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.zeros.html#numpy.zeros
+    x = np.zeros( (3, 6), dtype=np.float64)
+
+    print('x: \n', x)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.zeros_like.html#numpy.zeros_like
+    y = np.arange(25).reshape( (5, 5) )
+    x = np.zeros_like(y)
+
+    print('y: \n', y)
+    print('x: \n', x)
+
 
 def run():
 
@@ -413,7 +572,9 @@ def run():
 
     # shape_manipulation()
 
-    copies_and_views()
+    # copies_and_views()
+
+    # functions_and_methods_array_creation()
 
     return 0
 
