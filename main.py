@@ -559,6 +559,50 @@ def functions_and_methods_array_creation():
     print('y: \n', y)
     print('x: \n', x)
 
+def functions_and_methods_array_conversions():
+
+    # https://numpy.org/devdocs/reference/generated/numpy.ndarray.astype.html#numpy.ndarray.astype
+    x = np.arange(24, dtype=np.int64).reshape(4, 6)
+    y = x.astype(dtype=np.float64)
+
+    print('x: \n', x, '\ny: \n', y)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.atleast_1d.html#numpy.atleast_1d
+    x = 5.9
+    y = np.atleast_1d(x)
+
+    print('y: \n', y)
+
+    # note: higher dimensionalities are preserved
+    x = np.arange(25).reshape( (5, 5) )
+    y = np.atleast_1d(x)
+
+    print('x: \n', x, '\ny: \n', y)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.atleast_2d.html#numpy.atleast_2d
+    x = 5.9
+    y = np.atleast_2d(x)
+
+    print('y: \n', y)
+    # also preserves higher dimensionalities
+
+    # https://numpy.org/devdocs/reference/generated/numpy.atleast_3d.html#numpy.atleast_3d
+    x = 5.9
+    y = np.atleast_3d(x)
+
+    print('y: \n', y)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.mat.html#numpy.mat
+    x = np.array( [[1, 2], [3, 4]] )
+    m = np.asmatrix(x)
+
+    print('x: \n', x, '\nm: \n', m)
+
+    x = np.array( [1, 2] )
+    m = np.asmatrix(x)
+
+    print('x: \n', x, '\nm: \n', m)
+
 
 def run():
 
@@ -575,6 +619,8 @@ def run():
     # copies_and_views()
 
     # functions_and_methods_array_creation()
+
+    # functions_and_methods_array_conversions()
 
     return 0
 
