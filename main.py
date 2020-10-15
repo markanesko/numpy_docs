@@ -1,4 +1,5 @@
 import numpy as np
+import time
 
 def example_first():
     a = np.arange(15).reshape(3, 5)
@@ -606,28 +607,31 @@ def functions_and_methods_array_conversions():
 
 def run():
 
-    # example_first()
+    example_first()
 
-    # array_creation()
+    array_creation()
 
-    # basic_operations()
+    basic_operations()
 
-    # indexing_slicing_iterating()
+    indexing_slicing_iterating()
 
-    # shape_manipulation()
+    shape_manipulation()
 
-    # copies_and_views()
+    copies_and_views()
 
-    # functions_and_methods_array_creation()
+    functions_and_methods_array_creation()
 
-    # functions_and_methods_array_conversions()
+    functions_and_methods_array_conversions()
 
     return 0
 
 def main():
 
+    now = time.time()
+
     rc = run()
-    
+
+    print('function returned: ', rc, ', and it took: ', time.time() - now, ' seconds to finish')    
 
     return 0
 
