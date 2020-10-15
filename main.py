@@ -183,7 +183,59 @@ def basic_operations():
 
     # see also
     # all, any, apply_along_axis, argmax, argmin, argsort, average, bincount, ceil, clip, conj, corrcoef, cov, cross, cumprod, cumsum, diff, dot, floor, inner, invert, lexsort, max, maximum, mean, median, min, minimum, nonzero, outer, prod, re, round, sort, std, sum, trace, transpose, var, vdot, vectorize, where
+
+def indexing_slicing_iterating():
+    a = np.arange(10) ** 3
+
+    print('a arange ** 3: ', a)
+
+    print(' a[2] = ', a[2])
+
+    print(' a[2:5] = ', a[2:5])
+
+    # equivalent to a[0:6:2] = 10000
+    # from start to position 6, set every 2nd element to 10000
+
+    a[:6:2] = 10000
+
+    print(' a[:6:2] = 10000 = ', a) 
+
+    a_reversed = a[ : : -1]
+
+    print('a_reversed = ', a_reversed)
+
+    for i in a_reversed:
+        print('i ** (1/3.) = ', i ** (1/3.))
+
+    # multidimensional arrays can have one index per axis
+
+    def f(x, y):
+        return 10 * x + y
+
+    b = np.fromfunction(f, (5, 5), dtype=np.int64)
+
+    print('b fromfunction =\n', b)
+
+    print('direct indexing: ', b[2, 3])
+
+    # start : end : step
     
+    print('each row:\n', b[:5, :]) # of course it is same as matrix b
+    print('first 4 rows:\n', b[:4, :])
+    print('every second column:\n', b[:, ::2])
+    print('each row in second column: ', b[:5, 1])
+
+    # iteration is done with respect to the first axis
+    for row in b:
+        print('row => ', row)
+    
+    # if one wants to iterate through every element of multidimensional array => array.flat
+    for element in b.flat:
+        print('element => ', element)
+
+    # see also
+    # Indexing, Indexing (reference), newaxis, ndenumerate, indices
+
 
 def run():
 
@@ -191,7 +243,9 @@ def run():
 
     # array_creation()
 
-    basic_operations()
+    # basic_operations()
+
+    indexing_slicing_iterating()
 
 
     return 0
