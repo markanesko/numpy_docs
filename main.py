@@ -340,6 +340,67 @@ def shape_manipulation():
 
     print('a split after the third and the fourth column: \n', np.hsplit(a, (3, 4)))
 
+def copies_and_views():
+
+    a = np.array( [[0, 1, 2, 3],
+                   [4, 5, 6, 7],
+                   [8, 9, 10, 11]])
+    print('a: \n', a)
+
+    b = a
+
+    print('b is a: ', b is a)
+
+    # view or shallow copy
+    # the view method creates a new array object that looks at the same data
+
+    c = a.view()
+
+    print('c is a: ', c is a)
+    print('c.base is a: ', c.base is a)
+    print('c.flags.owndata: ', c.flags.owndata)
+
+    c = c.reshape( (2, 6) )
+
+    print('a.shape: ', a.shape)
+
+    c[0, 4] = 4096
+
+    print('a: \n', a)
+    print('c: \n', c)
+
+    # slicing an array returns a view of it
+    s = a[ :, 1:3]
+
+    print('s: \n', s)
+
+    s[:] = 123
+
+    print('a: \n', a)
+
+    # deep copy
+    # copy method makes a complete copy of the array and its data
+
+    d = a.copy()
+
+    print('d is a: ', d is a)
+    print('d.base is a: ', d.base is a)
+
+    d[0, 0] = 12345
+
+    print('a: \n', a, '\nd: \n', d)
+
+    # sometimes copy should be used when slicing, example: large intermidiate result sliced
+
+    a = np.arange(int(1e8))
+
+    b = a[::55].copy()
+
+    del a
+
+    print('b: \n', b) 
+
+
 def run():
 
     # example_first()
@@ -350,7 +411,9 @@ def run():
 
     # indexing_slicing_iterating()
 
-    shape_manipulation()
+    # shape_manipulation()
+
+    copies_and_views()
 
     return 0
 
