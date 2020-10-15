@@ -236,6 +236,109 @@ def indexing_slicing_iterating():
     # see also
     # Indexing, Indexing (reference), newaxis, ndenumerate, indices
 
+def shape_manipulation():
+
+    rg = np.random.default_rng(1)
+    a = np.floor( 10 * rg.random( (3, 4) ))
+
+    print('shape of a: ', a.shape)
+
+    # ndarray.ravel(), ndarray.reshape(), ndarray.T return modified array but don't change the original
+
+    print('a: \n', a)
+    
+    a_flattened = a.ravel()
+
+    print('a_flattened: \n', a_flattened)
+
+    a_reshaped = a.reshape(2, 6)
+
+    print('a_reshaped: \n', a_reshaped)
+
+    a_transposed = a.T
+    
+    print('a_transposed: \n', a_transposed)
+
+    # ndarray.resize() modifies the array itself
+
+    print('a: \n', a)
+    a.resize( (2, 6) )
+    print('a_resized:\n', a)
+
+    # stacking together different arrays
+
+    a = np.floor(10 * rg.random( (2, 2) ))
+
+    print('a: \n', a)
+
+    b = np.floor(10 * rg.random( (2, 2) ))
+
+    print('b: \n', b)
+
+    # vertical stack
+
+    v_stack = np.vstack( (a, b) )
+    h_stack = np.hstack( (a, b) )
+
+    print('vertical stack: \n', v_stack, '\nhorizontal stack: \n', h_stack)
+    
+    v_stack_multiple = np.vstack( (a, b, a, b) )
+    
+    print('vertical stack multiple: \n', v_stack_multiple)
+
+    # column_stack stacks 1d arrays as columns into a 2d array
+
+    cs_2d = np.column_stack( (a, b) )
+
+    print('column stack with 2d arrays: \n', cs_2d)
+
+    a = np.array( [1, 2, 3, 4, 5] )
+    b = np.array( [2, 3, 4, 1, 6] )
+
+    c = np.column_stack( (a, b) )
+
+    print('column stack from 2 1d arrays: \n', c)
+
+    c_hstack = np.hstack( (a, b) )
+
+    print('c_hstack: ', c_hstack)
+
+    a_column_vector = a[:, np.newaxis]
+    b_column_vector = b[:, np.newaxis]
+
+    ab_column_stack = np.column_stack( (a_column_vector, b_column_vector) )
+
+    ab_hstack = np.hstack( (a_column_vector, b_column_vector) )
+
+    print('ab_column_stack: \n', ab_column_stack, '\nab_hstack: \n', ab_hstack)    
+
+    # hstack and column_stack are different
+    # vstack and row_stack are equivalent
+
+    print('np.column_stack is np.hstack: ', np.column_stack is np.hstack)
+    print('np.row_stack is np.vstack', np.row_stack is np.vstack)
+
+    # concatenate allows for an optional argument giving the number of the axis along which the concatenation should happen
+
+    # stack numbers along one axis
+
+    rr = np.r_[1:16, 2, 3, 5]
+
+    print('stacked numbers on one axis: ', rr)
+
+    # see also
+    # hstack, vstack, column_stack, concatenate, c_, r_
+
+    # splitting arrays
+
+    a = np.floor(10 * rg.random( (2, 12) ))
+
+    print('a: \n', a)
+
+    # split a in 3
+    print('a splitted:\n', np.hsplit(a, 3))
+
+    print('a split after the third and the fourth column: \n', np.hsplit(a, (3, 4)))
 
 def run():
 
@@ -245,8 +348,9 @@ def run():
 
     # basic_operations()
 
-    indexing_slicing_iterating()
+    # indexing_slicing_iterating()
 
+    shape_manipulation()
 
     return 0
 
