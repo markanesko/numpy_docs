@@ -604,24 +604,129 @@ def functions_and_methods_array_conversions():
 
     print('x: \n', x, '\nm: \n', m)
 
+def functions_and_methods_manipulations():
+    # https://numpy.org/doc/stable/reference/generated/numpy.array_split.html#numpy.array_split
+    x = np.arange(8.0)
+    # array_split can split array in non-equal subarrays
+    y = np.array_split(x, 3)
+
+    print('y: \n', y)
+
+    # https://numpy.org/doc/stable/reference/generated/numpy.column_stack.html#numpy.column_stack
+    x = np.arange(3)
+    y = np.arange(3) * 2
+
+    z = np.column_stack( (x, y) )
+
+    print('z= \n', z)
+
+    x = np.arange(3)
+    y = np.arange(3) * 2
+    z = (np.arange(3) * 3)[::-1]
+
+    d = np.column_stack( (x, y, z) )
+    print('d= \n', d)
+
+    # https://numpy.org/doc/stable/reference/generated/numpy.concatenate.html#numpy.concatenate
+    # x = np.arange(4)
+    x = np.array( [[2, 1], [5, 5]] )
+    y = np.array( [[2, 5]] )
+
+    z = np.concatenate((x, y), axis = 0)
+
+    print('z= \n', z)
+
+    z = np.concatenate((x, y.T), axis = 1)
+
+    print('z= \n', z)
+
+    z = np.concatenate((x, y), axis=None)
+
+    print('z= \n', z)
+
+    # https://numpy.org/doc/stable/reference/generated/numpy.diagonal.html#numpy.diagonal
+    x = np.arange(9).reshape(3, 3)
+
+    print('x = \n', x)
+    print('xDiag = \n', x.diagonal())
+
+    # https://numpy.org/doc/stable/reference/generated/numpy.dsplit.html#numpy.dsplit
+    x = np.arange(16.0).reshape(2, 2, 4)
+    
+    print('x = \n', x)
+
+    print('x.ndsplit(2) = \n', np.dsplit(x, 2))
+
+    # https://numpy.org/doc/stable/reference/generated/numpy.dstack.html#numpy.dstack
+    x = np.array( [1, 2, 3] )
+    y = np.array( [2, 2, 3] )
+
+    z = np.dstack( (x, y) )
+
+    print('z = \n', z)
+
+    # https://numpy.org/doc/stable/reference/generated/numpy.hsplit.html#numpy.hsplit
+    x = np.arange(16.0).reshape(4, 4)
+
+    y, z = np.hsplit(x, 2)
+
+    print('y= \n', y, '\nz= \n', z)
+
+    # https://numpy.org/doc/stable/reference/generated/numpy.hstack.html#numpy.hstack
+    x = np.array( (1, 2, 4) )
+    y = np.array( (1, 3, 9) )
+
+    z = np.hstack( (x,  y) )
+
+    print('z= \n', z)
+
+    x = np.array( (1, 2, 4) )
+    x = np.atleast_2d(x).T 
+    y = np.array( (1, 3, 9) )
+    y = np.atleast_2d(y).T
+
+    z = np.hstack( (x,  y) )
+
+    print('z= \n', z)
+    
+    # https://numpy.org/doc/stable/reference/generated/numpy.ndarray.item.html#numpy.ndarray.item
+    np.random.seed(123)
+    x = np.random.randint(9, size = (3, 3))
+
+    print('x(3) = ', x.item(3), ' x( (2, 2) ) = ',  x.item( (2, 2) ))
+
+    # https://numpy.org/doc/stable/reference/constants.html#numpy.newaxis
+    # a convenient alias for None
+    print('newaxis is None: ', np.newaxis is None)
+    
+    x = np.arange(3)
+
+    y = x[:, np.newaxis]
+
+    print('y = \n', y)
+
+
+
 
 def run():
 
-    example_first()
+    # example_first()
 
-    array_creation()
+    # array_creation()
 
-    basic_operations()
+    # basic_operations()
 
-    indexing_slicing_iterating()
+    # indexing_slicing_iterating()
 
-    shape_manipulation()
+    # shape_manipulation()
 
-    copies_and_views()
+    # copies_and_views()
 
-    functions_and_methods_array_creation()
+    # functions_and_methods_array_creation()
 
-    functions_and_methods_array_conversions()
+    # functions_and_methods_array_conversions()
+
+    functions_and_methods_manipulations()
 
     return 0
 
