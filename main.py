@@ -705,6 +705,59 @@ def functions_and_methods_manipulations():
 
     print('y = \n', y)
 
+    # https://numpy.org/devdocs/reference/generated/numpy.ravel.html#numpy.ravel
+    x = np.array( [[1, 2, 3], [2, 1, 4]] )
+    x_raveled = np.ravel(x)
+
+    print('x_raveled = ', x_raveled)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.repeat.html#numpy.repeat
+    x = np.repeat(3, 4)
+    
+    print('np.repeat(3, 4) = ', x)
+
+    x = np.array( [[2, 2, 1], [1, 4, 56]] )
+    x = np.repeat(x, 3)
+
+    print('x_repeat = \n', x)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.reshape.html#numpy.reshape
+    x = np.arange(16).reshape( (4, 4) )
+    print('x: \n', x)
+    # first ravel elements then reshape them in wanted dimensions
+
+    # https://numpy.org/devdocs/reference/generated/numpy.resize.html#numpy.resize
+    x = np.array( [[1, 2], [0, 3]] )
+    y = np.resize(x, (2, 3))
+
+    print('x = \n', x, '\ny = \n', y)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.squeeze.html#numpy.squeeze
+    x = np.array( [[1], [3], [0]] )
+    print('x shape = ', x.shape)
+
+    print('x.squeeze shape = ', np.squeeze(x).shape)
+
+    # https://numpy.org/devdocs/reference/generated/numpy.swapaxes.html#numpy.swapaxes
+    x = np.array( [[1, 2, 3]] )
+    y = np.swapaxes(x, 0 , 1)
+
+    print('x = \n', x, '\ny = \n', y)
+
+    x = np.array([[[0,1],[2,3]],[[4,5],[6,7]]])
+    y = np.swapaxes(x, 0, 2)
+
+    print('x = \n', x, '\ny = \n', y)
+
+    # https://numpy.org/devdocs/user/quickstart.html
+    
+
+
+
+
+
+
+
 
 
 
